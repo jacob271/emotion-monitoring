@@ -117,9 +117,9 @@ class EmotionDetector(threading.Thread):
                 message = "fatigue: " + str(round(self.emotion_counters[5] / self.count * 100)) + "%"
                 print(self.emotion_counters)
                 print(self.count)
-                #self.sendmessage(message)
-                if self.emotion_counters[3]/self.count > 0.4:
-                    print(str(self.emotion_counters[3]/self.count))
+                # self.sendmessage(message)
+                if self.emotion_counters[3] / self.count > 0.4:
+                    print(str(self.emotion_counters[3] / self.count))
                     matplotlib.rcParams['toolbar'] = 'None'
                     img = mpimg.imread('happy.png')
                     imgplot = plt.imshow(img)
@@ -127,9 +127,9 @@ class EmotionDetector(threading.Thread):
                     plt.tight_layout()
                     plt.get_current_fig_manager().canvas.set_window_title('pfxt')
                     plt.show()
-                    #plt.waitforbuttonpress(0)
-                elif (self.emotion_counters[5]+self.emotion_counters[2])/self.count > 0.2:
-                    print(str((self.emotion_counters[5]+self.emotion_counters[2])/self.count))
+                    # plt.waitforbuttonpress(0)
+                elif (self.emotion_counters[5] + self.emotion_counters[2]) / self.count > 0.2:
+                    print(str((self.emotion_counters[5] + self.emotion_counters[2]) / self.count))
                     matplotlib.rcParams['toolbar'] = 'None'
                     img = mpimg.imread('tired.png')
                     imgplot = plt.imshow(img)
@@ -146,7 +146,7 @@ class EmotionDetector(threading.Thread):
                     self.emotion_counters[i] = 0
                 # break
             if count2 > 1:
-                cv2.imshow('Video', cv2.resize(frame,(1600,960),interpolation = cv2.INTER_CUBIC))
+                cv2.imshow('Video', cv2.resize(frame, (1600, 960), interpolation=cv2.INTER_CUBIC))
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
 
@@ -157,8 +157,7 @@ class EmotionDetector(threading.Thread):
     def run(self):
         self.display()
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
     emotion_detection = EmotionDetector()
     emotion_detection.start()
-
