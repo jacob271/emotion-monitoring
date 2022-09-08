@@ -1,14 +1,14 @@
 from flask import Flask
-from emotions import EmotionDetector
+from emotion_monitoring import EmotionMonitor
 
 app = Flask(__name__)
-emotion_detector = EmotionDetector()
-emotion_detector.start()
+emotion_monitor = EmotionMonitor()
+emotion_monitor.start()
 
 
 @app.route('/display/', methods=['GET', 'POST'])
 def show_emotion_counters():
-    return "<div> " + str(emotion_detector.emotion_counters) + "</div>"
+    return "<div> " + str(emotion_monitor.emotion_counters) + "</div>"
 
 
 if __name__ == '__main__':

@@ -1,6 +1,5 @@
 import numpy as np
 import cv2
-import subprocess
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Flatten
 from tensorflow.keras.layers import Conv2D
@@ -15,7 +14,7 @@ import matplotlib.image as mpimg
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 
-class EmotionDetector(threading.Thread):
+class EmotionMonitor(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
 
@@ -78,7 +77,7 @@ class EmotionDetector(threading.Thread):
                 if self.emotion_counters[3] / self.count > 0.4:
                     print("Happy percentage: " + str(self.emotion_counters[3] / self.count))
                     matplotlib.rcParams['toolbar'] = 'None'
-                    img = mpimg.imread('happy.png')
+                    img = mpimg.imread('keep_going_notification.png')
                     plt.imshow(img)
                     plt.axis('off')
                     plt.tight_layout()
@@ -88,7 +87,7 @@ class EmotionDetector(threading.Thread):
                     print(
                         "fatigue percentage: " + str((self.emotion_counters[5] + self.emotion_counters[2]) / self.count))
                     matplotlib.rcParams['toolbar'] = 'None'
-                    img = mpimg.imread('tired.png')
+                    img = mpimg.imread('take_break_notification.png')
                     plt.imshow(img)
                     plt.axis('off')
                     plt.tight_layout()
@@ -109,5 +108,5 @@ class EmotionDetector(threading.Thread):
 
 
 if __name__ == '__main__':
-    emotion_detection = EmotionDetector()
-    emotion_detection.start()
+    emotion_monitor = EmotionMonitor()
+    emotion_monitor.start()

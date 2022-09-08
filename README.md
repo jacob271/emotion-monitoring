@@ -17,7 +17,7 @@ We also send a notification, if people are having a great time.
 
 ```bash 
 cd src
-python emotions.py
+python emotion_monitoring.py
 ```
 
 ## Future work
