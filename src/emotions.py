@@ -39,14 +39,8 @@ class EmotionDetector(threading.Thread):
         self.model.add(Dense(7, activation='softmax'))
         self.emotion_counters = [0, 0, 0, 0, 0, 0, 0]
         self.count = 1
-        print("constructed")
 
-    def sendmessage(self, message):
-        subprocess.Popen(['notify-send', "-t", "500", message, "more specific message"])
-        return
-
-    # emotions will be displayed on your face from the webcam feed
-    def display(self):
+    def run(self):
         self.model.load_weights('model.h5')
         # prevents openCL usage and unnecessary logging messages
         cv2.ocl.setUseOpenCL(False)
@@ -112,9 +106,6 @@ class EmotionDetector(threading.Thread):
 
         cap.release()
         cv2.destroyAllWindows()
-
-    def run(self):
-        self.display()
 
 
 if __name__ == '__main__':
