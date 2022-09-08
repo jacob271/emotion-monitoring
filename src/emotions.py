@@ -86,7 +86,7 @@ class EmotionDetector(threading.Thread):
                     plt.show()
                 elif (self.emotion_counters[5] + self.emotion_counters[2]) / self.count > 0.2:
                     print(
-                        "fatigue percentage" + str((self.emotion_counters[5] + self.emotion_counters[2]) / self.count))
+                        "fatigue percentage: " + str((self.emotion_counters[5] + self.emotion_counters[2]) / self.count))
                     matplotlib.rcParams['toolbar'] = 'None'
                     img = mpimg.imread('tired.png')
                     plt.imshow(img)
