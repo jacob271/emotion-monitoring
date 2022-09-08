@@ -7,14 +7,8 @@ emotion_detector.start()
 
 
 @app.route('/display/', methods=['GET', 'POST'])
-def testest():
-    # return "Hello World!"
+def show_emotion_counters():
     return "<div> " + str(emotion_detector.emotion_counters) + "</div>"
-
-
-@app.route('/hello/', methods=['GET', 'POST'])
-def welcome():
-    return "Hello World!"
 
 
 if __name__ == '__main__':
